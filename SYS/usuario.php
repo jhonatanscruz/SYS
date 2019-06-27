@@ -173,7 +173,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Pressione "Sair" abaixo se você deseja encerrar a sessão.</div>
+        <div class="modal-body">Pressione "Sair" abaixo para encerrar a sessão.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <a class="btn btn-primary" href="logoff.php">Sair</a>

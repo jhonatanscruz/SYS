@@ -1,5 +1,8 @@
-<!-- Requerimento de acesso-->
-<?php require_once('valida_acesso.php'); ?>
+<!-- Verificações -->
+<?php 
+  require_once('valida_acesso.php'); 
+  session_start(); //iniciando sessão do usuário
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -137,7 +140,7 @@
         </ol>
 
         <!-- Icon Cards-->
-        <div class="row">
+        <div class="row" id="cards">
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-primary o-hidden h-100">
               <div class="card-body">
@@ -235,7 +238,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Pressione "Sair" abaixo se você deseja sencerrar a sessão.</div>
+        <div class="modal-body">Pressione "Sair" abaixo para encerrar a sessão.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <a class="btn btn-primary" href="logoff.php">Sair</a>
@@ -243,6 +246,21 @@
       </div>
     </div>
   </div>
+
+  <?php
+  //Verificando a existência do acionamento
+  if(!isset($_SESSION['aciona']) || $_SESSION['aciona'] != True){ ?>
+    <script>
+
+        document.getElementById("cards").style.display = "none"
+
+    </script>
+
+    <div class="text-danger">
+      Usuário e/ou senha inválido(s)
+    </div>
+
+<?php } ?>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>

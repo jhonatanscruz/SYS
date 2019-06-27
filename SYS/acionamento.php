@@ -234,7 +234,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary" id="criaGrupo">Salvar</button>
+          <button type="button" class="btn btn-primary" id="criaGrupo" data-dismiss="modal">Salvar</button>
         </div>
       </div>
     </div>
@@ -250,10 +250,10 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Pressione "Acionar" abaixo se você deseja começar o processo de irrigação.</div>
+        <div class="modal-body">Pressione "Acionar" se você deseja começar a irrigação.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="">Acionar</a>
+          <a class="btn btn-primary" href="aciona-raspy.php">Acionar</a>
         </div>
       </div>
     </div>
@@ -289,6 +289,7 @@
         </div>
       </div>`
       }
+      nomeGrupo.value = ""
     }
   </script>
 
