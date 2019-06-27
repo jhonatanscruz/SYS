@@ -20,6 +20,18 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 
+  <style>
+  
+    div#grupos{
+      margin: 20px 0px 0px 0px;
+    }
+
+    div#listaGrupos{
+      margin: 15px 0px 0px 0px;
+    }
+  
+  </style>
+
 </head>
 
 <body id="page-top">
@@ -136,11 +148,14 @@
         </ol>
 
         <!-- Page Content -->
-        <h2>Clique no botão abaixo para iniciar as configurações de Acionamento</h2>
+        <h2>Configurações de acionamento</h2>
         <hr>
-        <button class="btn btn-primary btn-lg dropdown-item" id="sidebarToggle" href="#" data-toggle="modal" data-target="#logoutModal">
-        <i class="fas fa-bars"></i>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#group-config">
+          Criar Grupo
         </button>
+        <hr>
+        <div id="grupos">Você ainda não possui nenhum grupo. Para acionar o sistema crie um novo grupo.</div>
+
       </div>
       <!-- /.container-fluid -->
 
@@ -183,7 +198,100 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
+  <!-- Modal Lista de Solenóides-->
+  <div class="modal fade" id="group-config" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Novo Grupo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Nome do grupo:</label>
+              <input type="text" class="form-control" id="nome-grupo">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Escolha os setores:</label>
+              <br>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="Check1" value="1">
+                <label class="form-check-label" for="Check1">Setor 1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="Check2" value="1">
+                <label class="form-check-label" for="Check2">Setor 2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="Check3" value="1">
+                <label class="form-check-label" for="Check3">Setor 3</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary" id="criaGrupo">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Acionamento Modal-->
+    <div class="modal fade" id="acionamento_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja começar a irrigar?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Pressione "Acionar" abaixo se você deseja começar o processo de irrigação.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="">Acionar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var a = document.querySelector("button#criaGrupo")
+    a.addEventListener('click', criaGrupo)
+
+    function criaGrupo(){
+      var b = document.querySelector("div#grupos")
+      var nomeGrupo = document.querySelector("input#nome-grupo")
+
+      if(b.innerHTML == "Você ainda não possui nenhum grupo. Para acionar o sistema crie um novo grupo.")
+      {
+      b.innerHTML =
+      `<div id="listaGrupos">
+        <button type="button" class="btn btn-info">${nomeGrupo.value}</button>
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#acionamento_Modal"><i class="fas fa-play"></i></button>
+        <button type="button" class="btn btn-secondary"><i class="fas fa-cog"></i></button>
+        <button type="button" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
+        </div>
+      </div>`
+      }else{
+        b.innerHTML +=
+        `<div id="listaGrupos">
+        <button type="button" class="btn btn-info">${nomeGrupo.value}</button>
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-success data-toggle="modal" data-target="#acionamento_Modal""><i class="fas fa-play"></i></button>
+        <button type="button" class="btn btn-secondary"><i class="fas fa-cog"></i></button>
+        <button type="button" class="btn btn-danger"><i class="fas fa-times-circle"></i></button>
+        </div>
+      </div>`
+      }
+    }
+  </script>
+
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
