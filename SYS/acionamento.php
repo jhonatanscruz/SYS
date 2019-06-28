@@ -1,5 +1,8 @@
 <!-- Requerimento de acesso-->
-<?php require_once('valida_acesso.php'); ?>
+<?php 
+    require_once('valida_acesso.php'); 
+    session_start(); //iniciando sessão do usuário
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -208,6 +211,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        
         <div class="modal-body">
           <form>
             <div class="form-group">
@@ -218,16 +222,16 @@
               <label for="message-text" class="col-form-label">Escolha os setores:</label>
               <br>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="Check1" value="1">
-                <label class="form-check-label" for="Check1">Setor 1</label>
+                <input class="form-check-input" type="checkbox" id="check1">
+                <label class="form-check-label" for="check1">Setor 1</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="Check2" value="1">
-                <label class="form-check-label" for="Check2">Setor 2</label>
+                <input class="form-check-input" type="checkbox" id="check2">
+                <label class="form-check-label" for="check2">Setor 2</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="Check3" value="1">
-                <label class="form-check-label" for="Check3">Setor 3</label>
+                <input class="form-check-input" type="checkbox" id="check3">
+                <label class="form-check-label" for="check3">Setor 3</label>
               </div>
             </div>
           </form>
@@ -250,7 +254,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Pressione "Acionar" se você deseja começar a irrigação.</div>
+        <div class="modal-body">Pressione "Acionar" para começar a irrigação.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <a class="btn btn-primary" href="aciona-raspy.php">Acionar</a>
@@ -266,6 +270,9 @@
     function criaGrupo(){
       var b = document.querySelector("div#grupos")
       var nomeGrupo = document.querySelector("input#nome-grupo")
+
+      var Check1 = document.getElementById("check1")
+      var Check2 = document.getElementById("check2")
 
       if(b.innerHTML == "Você ainda não possui nenhum grupo. Para acionar o sistema crie um novo grupo.")
       {
@@ -289,6 +296,7 @@
         </div>
       </div>`
       }
+
       nomeGrupo.value = ""
     }
   </script>

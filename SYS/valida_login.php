@@ -23,9 +23,9 @@
 	
 	//Se for autenticado redireciona para a página principal, senão login=erro
 	if($autenticado){
-            header('Location: home.php');
+		header('Location: home.php');
 	    $_SESSION['autenticado'] = 'SIM'; }
 	else{
-            header('Location: index.php?login=erro');
+        header('Location: index.php?login=erro');
 	    $_SESSION['autenticado'] = 'NAO'; }
 ?>

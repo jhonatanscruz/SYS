@@ -141,70 +141,37 @@
 
         <!-- Icon Cards-->
         <div class="row" id="cards">
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-comments"></i>
-                </div>
-                <div class="mr-5">12 Novas Mensagens!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">Detalhes</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-list"></i>
-                </div>
-                <div class="mr-5">5 Novas Tarefas!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">Detalhes</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
+
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-success o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-                  <i class="fas fa-fw fa-shopping-cart"></i>
+                  <i class="fas fa-leaf"></i>
                 </div>
-                <div class="mr-5">15 Acionamentos!</div>
+                <div class="mr-5"> 
+                <?php
+                //Verificando a existência da autenticação
+                if(isset($_SESSION['nomeGrupo1'])){
+                    echo "<i class='fas fa-leaf'></i> <strong>" . ($_SESSION['nomeGrupo1']) . "</strong>" . " foi acionado às " . ($_SESSION['hora1']);
+                }
+                ?>
+                </div>
               </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">Detalhes</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
+              <span class="card-footer text-white clearfix xl z-1" href="#">
+                <div class="mr-5">                
+                <?php
+                //Verificando a existência da autenticação
+                if(isset($_SESSION['nomeGrupo1'])){
+                    echo "Setores acionados:</br>";
+                    echo "Setor 1</br>";
+                    echo "Setor 2";
+                }
+                ?>
+                </div>
+              </span>
             </div>
           </div>
-          <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-              <div class="card-body">
-                <div class="card-body-icon">
-                  <i class="fas fa-fw fa-life-ring"></i>
-                </div>
-                <div class="mr-5">1 Módulo com mal funcionamento!!</div>
-              </div>
-              <a class="card-footer text-white clearfix small z-1" href="#">
-                <span class="float-left">Detalhes</span>
-                <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
-              </a>
-            </div>
-          </div>
+
         </div>
       </div>
       <!-- /.container-fluid -->
@@ -248,19 +215,18 @@
   </div>
 
   <?php
-  //Verificando a existência do acionamento
-  if(!isset($_SESSION['aciona']) || $_SESSION['aciona'] != True){ ?>
-    <script>
-
+    //Verificando a existência do acionamento
+    if(!isset($_SESSION['aciona']) || $_SESSION['aciona'] != True){ ?>
+      <script>
         document.getElementById("cards").style.display = "none"
+      </script>
+  <?php } ?>
 
-    </script>
-
-    <div class="text-danger">
-      Usuário e/ou senha inválido(s)
-    </div>
-
-<?php } ?>
+  <script>
+  
+      //document.getElementById("icone").setAttribute(class, "fas fa-leaf")
+  
+  </script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
